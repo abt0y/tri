@@ -1,16 +1,40 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Sidebar from '@/components/Sidebar';
+import TopNav from '@/components/TopNav';
+import MyCourses from '@/components/MyCourses';
+import MyProgress from '@/components/MyProgress';
+import MySchedule from '@/components/MySchedule';
+import MyTasks from '@/components/MyTasks';
+import { I18nProvider } from '@/lib/i18n';
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Dashboard = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="flex min-h-screen bg-background">
+      <Sidebar />
+      <div className="flex-1 min-w-0 flex flex-col">
+        <TopNav />
+        <main className="flex-1 p-4 sm:p-6 overflow-y-auto">
+          <div className="grid grid-cols-1 xl:grid-cols-[1fr_340px] gap-5">
+            {/* Left column */}
+            <div className="space-y-5 min-w-0">
+              <MyCourses />
+              <MySchedule />
+            </div>
+            {/* Right column */}
+            <div className="space-y-5">
+              <MyProgress />
+              <MyTasks />
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
 
-const Index = PlaceholderIndex;
+const Index = () => (
+  <I18nProvider>
+    <Dashboard />
+  </I18nProvider>
+);
 
 export default Index;
