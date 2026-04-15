@@ -10,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-# ← This fixes the Node 20 deprecation warning
+# Fixes the Node 20 deprecation
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -22,7 +22,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22     # Updated to current LTS (safer than 20)
+          node-version: 22     # Current LTS
           cache: 'npm'
 
       - run: npm ci
